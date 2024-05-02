@@ -19,17 +19,4 @@ public class Human
         this.passcard = true;
         
     }
-    public void showaction()
-    {
-        Console.WriteLine("行動を選択してください");
-        Console.WriteLine(action[0]);
-        if(passcard == true)
-        {
-            Console.WriteLine("," +action[1]);
-        }
-        else if(showcard == true)
-        {
-            Console.Write(","+action[2]);
-        }
-    }
 }
