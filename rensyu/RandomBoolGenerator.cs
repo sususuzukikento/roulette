@@ -8,4 +8,8 @@ public class RandomBoolGenerator
     {
         return random.Next(2) == 0;
     }
+    public static bool GetRandomBoollow()//1/3の確率でtrue
+    {
+        return random.Next(0,3) == 0;
+    }
 }
