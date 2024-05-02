@@ -20,4 +20,32 @@ public class Gun
         }
         Console.WriteLine($"弾数は{n}です");
     }
+    public bool Gunshot()
+    {
+        return Bullet[Count] == true;
+        Count++;
+    }
+    public void Show()
+    {
+        if (Bullet[Count] == true)
+        {
+            Console.WriteLine("実弾が入っています");
+        }
+        else
+        {
+            Console.WriteLine("空弾が入っています");
+        }
+    }
+    public void Bulletcount()
+    {
+        int num = 0;
+        foreach (bool tf in Bullet)
+        {
+            if (tf)
+            {
+                num++;
+            }
+        }
+        Console.WriteLine($"実弾は{num}発入っています");
+    }
 }
