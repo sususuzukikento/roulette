@@ -9,8 +9,8 @@ public class Human
 {
     public int life {  get; set; }
     public string name { get; set; }
-    public bool showcard { get; set; }
-    public bool passcard { get; set; }
+    public bool usedShowCard { get; set; }
+    public bool usedPassCard { get; set; }
 
     string[] actionList = new string[] { "1:引き金を引く", "2:パスする", "3:実弾の数を見る" };
 
@@ -18,9 +18,8 @@ public class Human
     {
         life = 3;
         this.name=name;
-        this.showcard = true;
-        this.passcard = true;
-        
+        this.usedShowCard = false;
+        this.usedPassCard = false;
     }
     public Human():this("Player") { }
     public void trigger(bool tf)
@@ -37,26 +36,35 @@ public class Human
             Console.WriteLine($"{name}の残りHPは {life}です");
         }
     }
-    public void useshowcard()
+    public void showCard(bool tf)
     {
-        showcard = false;
+        usedShowCard = true;
+        if (tf == true)
+        {
+            Console.WriteLine("実弾が入っています");
+        }
+        else
+        {
+            Console.WriteLine("空弾が入っています");
+        }
     }
-    public void usepasscard()
+    public void passCard()
     {
-        passcard = false;
+        usedPassCard = true;
+        Console.WriteLine("パスしました");
     }
-    public int selectaction()
+    public virtual int selectAction()
     {
         int num;
         while (true)
         {
             Console.WriteLine("行動を選択してください");
             Console.Write(actionList[0]);
-            if (passcard == true)
+            if (usedPassCard == false)
             {
                 Console.Write("," + actionList[1]);
             }
-            else if (showcard == true)
+            if (usedShowCard == false)
             {
                 Console.Write("," + actionList[2]);
             }
@@ -72,20 +80,21 @@ public class Human
         }
         return num;
     }
-    public void useaction(bool bl)
+    public void doAction(bool tf)
     {
-        int n = int.Parse(Console.ReadLine());
+        int n = selectAction();
+        Thread.Sleep(1000);
         if (n == 1)
         {
-            trigger(bl);
+            trigger(tf);
         }
         else if(n == 2)
         {
-            usepasscard();
+            passCard();
         }
         else if(n==3)
         {
-            useshowcard();
+            showCard(tf);
         }
     }
 }
