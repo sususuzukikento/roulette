@@ -1,25 +1,16 @@
 ﻿using System;
-class rennsyu
+class Rensyu
 {
     static void Main()
     {
         Console.WriteLine("名前を入力してください");
         string inputname = Console.ReadLine();
+        Gun gun = new Gun();
         Human player = new Human(inputname);
-        Human dealer = new Human("ディーラー");
-        bool order = RandomBoolGenerator.GetRandomBool();
-        if (order)
-        {
-            Console.WriteLine($"{player.name}の先行です");
-            Gun gun = new Gun();
-            player.showaction();
-            int selectnum = Game.selectaction();
-
-        }
-        else 
-        {
-            Console.WriteLine($"{player.name}の先行です");
-        }
+        Dealer dealer = new Dealer("ディーラー");
+        Game game = new Game(player, dealer, gun);
+        game.battle();
+        
     }
-    
 }
+

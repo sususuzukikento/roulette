@@ -20,32 +20,33 @@ public class Gun
         }
         Console.WriteLine($"弾数は{n}です");
     }
-    public bool Gunshot()
+    public bool shot()
     {
-        return Bullet[Count] == true;
+        bool tf = Bullet[Count]==true;
         Count++;
+        return tf;
     }
-    public void Show()
-    {
-        if (Bullet[Count] == true)
-        {
-            Console.WriteLine("実弾が入っています");
-        }
-        else
-        {
-            Console.WriteLine("空弾が入っています");
-        }
-    }
-    public void Bulletcount()
-    {
-        int num = 0;
-        foreach (bool tf in Bullet)
-        {
-            if (tf)
-            {
-                num++;
-            }
-        }
-        Console.WriteLine($"実弾は{num}発入っています");
-    }
+    // public void show()
+    // {
+    //     if (Bullet[Count] == true)
+    //     {
+    //         Console.WriteLine("実弾が入っています");
+    //     }
+    //     else
+    //     {
+    //         Console.WriteLine("空弾が入っています");
+    //     }
+    // }
+    // public void bulletCount()
+    // {
+    //     int num = 0;
+    //     foreach (bool tf in Bullet)
+    //     {
+    //         if (tf)
+    //         {
+    //             num++;
+    //         }
+    //     }
+    //     Console.WriteLine($"実弾は{num}発入っています");
+    // }
 }
