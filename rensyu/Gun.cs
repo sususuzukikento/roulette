@@ -47,16 +47,18 @@ public class Gun
         int n = random.Next(3, 6);
         Bullet = new bool[n];
         Count = 0;
-        for (int i = 0; i < n; i++)
+        while (true)
         {
-            Bullet[i] = RandomBoolGenerator.GetRandomBoollow();
+            for (int i = 0; i < n; i++)
+            {
+                Bullet[i] = RandomBoolGenerator.GetRandomBoollow();
+            }
+            if(allBullet!=0&&allBullet!=n)
+            {
+                break;
+            }
         }
-        Console.WriteLine($"弾数は{n}です");
-    }
-    public bool Gunshot()
-    {
-        Count++;
-        return Bullet[Count] == true;
+        Console.WriteLine($"マガジンの弾数は{n}です");
     }
     public void Show()
     {
@@ -73,5 +75,22 @@ public class Gun
     {
         Console.WriteLine($"実弾は{allBullet-cartridge}発入っています");
     }
-    
+    public void resetBullet()
+    {
+        Random random = new Random();
+        int n = random.Next(3, 6);
+        Bullet = new bool[n];
+        Count = 0;
+        while (true)
+        {
+            for (int i = 0; i < n; i++)
+            {
+                Bullet[i] = RandomBoolGenerator.GetRandomBoollow();
+            }
+            if (allBullet != 0 && allBullet != n)
+            {
+                break;
+            }
+        }
+    }
 }

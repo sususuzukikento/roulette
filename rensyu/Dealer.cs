@@ -13,6 +13,7 @@ class Dealer : Human
         name = "ディーラー";
         actionmemory = false;
     }
+
     public void dealerAction(Gun gun, int select)
     {
         if (actionmemory)

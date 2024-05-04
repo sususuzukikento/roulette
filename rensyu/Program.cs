@@ -14,7 +14,7 @@ class rennsyu
             Gun gun = new Gun();
             while (true)
             {
-                player.selectAction(gun, out int select);
+                player.selectAction(gun,dealer, out int select);
                 if(select==3)
                 {
                     continue;
