@@ -13,7 +13,7 @@ public class Human
     public bool passcard { get; set; }
     public bool pointtriggercard {  get; set; }
 
-    string[] actionList = new string[] { "1:引き金を引く", "2:パスする", "3:実弾の数を見る","相手を撃つ" };
+    string[] actionList = new string[] { "1:引き金を引く", "2:パスする", "3:実弾の数を見る","4:相手を撃つ" };
 
     public Human(string name)
     {
@@ -31,13 +31,13 @@ public class Human
             Console.WriteLine($"{name}は引き金を引きました");
             life--;
             Console.WriteLine("実弾が入っていました");
-            Console.WriteLine($"{name}の残りHPは{life}です");
+            Console.WriteLine($"{name}の残りHPは{life}です\n");
         }
         else
         {
             Console.WriteLine($"{name}は引き金を引きました");
-            Console.WriteLine("空弾が入っていました");
-            Console.WriteLine($"{name}の残りHPは {life}です");
+            Console.WriteLine("実弾は入っていませんでした");
+            Console.WriteLine($"{name}の残りHPは {life}です\n");
         }
         gun.Count++;
     }
@@ -49,13 +49,13 @@ public class Human
             Console.WriteLine($"{name}は{human.name}に向かって引き金を引きました");
             human.life--;
             Console.WriteLine("実弾が入っていました");
-            Console.WriteLine($"{name}の残りHPは{life}です");
+            Console.WriteLine($"{human.name}の残りHPは{life}です\n");
         }
         else
         {
             Console.WriteLine($"{name}は{human.name}に向かって引き金を引きました");
-            Console.WriteLine("空弾が入っていました");
-            Console.WriteLine($"{name}の残りHPは {life}です");
+            Console.WriteLine("実弾は入っていませんでした");
+            Console.WriteLine($"{human.name}の残りHPは {life}です\n");
         }
     }
     public void usecheatcard()
@@ -70,7 +70,7 @@ public class Human
     {
         pointtriggercard = false;
     }
-    public void selectAction(Gun gun,Human human,out int select)
+    public void selectAction(Gun gun,Human human)
     {
         int num;
         while (true)
@@ -83,10 +83,15 @@ public class Human
                 {
                     Console.Write("," + actionList[1]);
                 }
-                else if (cheatcard == true)
+                if (cheatcard == true)
                 {
                     Console.Write("," + actionList[2]);
                 }
+                if(pointtriggercard == true)
+                {
+                    Console.Write("," + actionList[3]);
+                }
+                Console.WriteLine();
                 bool b = int.TryParse(Console.ReadLine(), out num);
                 if (b == true)
                 {
@@ -97,21 +102,22 @@ public class Human
                     Console.WriteLine("数字を入力してください\n");
                 }
             }
-            select = num;
             if (num == 1)
             {
                 trigger(gun);
+                break;
             }
             else if (num == 2)
             {
                 if (passcard)
                 {
                     usepasscard();
+                    Console.WriteLine("パスを使用しました\n");
                     break;
                 }
                 else
                 {
-                    Console.WriteLine("使用できません");
+                    Console.WriteLine("使用できません\n");
                 }
             }
             else if (num == 3)
@@ -119,8 +125,9 @@ public class Human
                 if (cheatcard)
                 {
                     usecheatcard();
-                    gun.Bulletcount();
-                    break;
+                    Console.WriteLine("次の弾を確認しました\n");
+                    gun.Show();
+                    continue;
                 }
                 else
                 {
@@ -132,11 +139,11 @@ public class Human
                 if (pointtriggercard)
                 {
                     pointtrigger(gun,human);
-                    break;
+                    continue;
                 }
                 else
                 {
-                    Console.WriteLine("使用できません");
+                    Console.WriteLine("使用できません\n");
                 }
             }
         }

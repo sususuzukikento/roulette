@@ -9,6 +9,13 @@ public class Gun
 {
     public bool[] Bullet { get; set; }
     public int Count {  get; set; }
+    public double probability //開示されている情報のみで求まる実弾が込められている確率。
+    { get
+        {
+            return (Bullet.Length+1-cartridge)/(3*Bullet.Length-Count);
+        }
+        set { probability = value; } 
+    }
     public int allBullet//マガジン内の実弾の数
     {
         get
@@ -58,22 +65,22 @@ public class Gun
                 break;
             }
         }
-        Console.WriteLine($"マガジンの弾数は{n}です");
+        Console.WriteLine($"マガジンの弾数は{n}です\n");
     }
     public void Show()
     {
-        if (Bullet[Count] == true)
+        if (Bullet[Count+1] == true)
         {
-            Console.WriteLine("実弾が入っています");
+            Console.WriteLine("実弾が入っています\n");
         }
         else
         {
-            Console.WriteLine("空弾が入っています");
+            Console.WriteLine("実弾は入っていません\n");
         }
     }
     public void Bulletcount()
     {
-        Console.WriteLine($"実弾は{allBullet-cartridge}発入っています");
+        Console.WriteLine($"実弾は{allBullet-cartridge}発入っています\n");
     }
     public void resetBullet()
     {
@@ -92,5 +99,6 @@ public class Gun
                 break;
             }
         }
+        Console.WriteLine("弾を撃ち切ったのでマガジンをリロードします\n");
     }
 }
