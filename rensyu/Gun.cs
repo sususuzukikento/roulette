@@ -69,7 +69,7 @@ public class Gun
     }
     public void Show()
     {
-        if (Bullet[Count+1] == true)
+        if (Bullet[Count] == true)
         {
             Console.WriteLine("実弾が入っています\n");
         }

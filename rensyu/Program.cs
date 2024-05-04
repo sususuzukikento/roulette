@@ -20,7 +20,9 @@ class rennsyu
                 Thread.Sleep(1000);
                 if (gun.Bullet.Length==gun.Count)
                 {
+                    Thread.Sleep(1000);
                     gun.resetBullet();
+                    Console.WriteLine($"マガジンの弾数は{gun.Bullet.Length}です\n");
                     Thread.Sleep(1000);
                 }
                 if(player.life==0||dealer.life==0)
@@ -31,7 +33,9 @@ class rennsyu
                 Thread.Sleep(1000);
                 if (gun.Bullet.Length == gun.Count)
                 {
+                    Thread.Sleep(1000);
                     gun.resetBullet();
+                    Console.WriteLine($"マガジンの弾数は{gun.Bullet.Length}です\n");
                     Thread.Sleep(1000);
                 }
                 if (player.life == 0 || dealer.life == 0)
@@ -57,7 +61,10 @@ class rennsyu
                 dealer.dealerAction(gun, player);
                 if (gun.Bullet.Length == gun.Count)
                 {
+                    Thread.Sleep(1000);
                     gun.resetBullet();
+                    Console.WriteLine($"マガジンの弾数は{gun.Bullet.Length}です\n");
+                    Thread.Sleep(1000);
                 }
                 if (player.life == 0 || dealer.life == 0)
                 {
@@ -66,7 +73,10 @@ class rennsyu
                 player.selectAction(gun, dealer);
                 if (gun.Bullet.Length == gun.Count)
                 {
+                    Thread.Sleep(1000);
                     gun.resetBullet();
+                    Console.WriteLine($"マガジンの弾数は{gun.Bullet.Length}です\n");
+                    Thread.Sleep(1000);
                 }
                 if (player.life == 0 || dealer.life == 0)
                 {

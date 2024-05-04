@@ -15,7 +15,7 @@ class Dealer : Human
     {
         while (true)
         {
-            if (gun.probability < 1 / 2)
+            if (gun.probability < (1 / 2))
             {
                 trigger(gun);
                 break;
@@ -26,7 +26,7 @@ class Dealer : Human
                 {
                     usecheatcard();
                     Console.WriteLine("ディーラーは次の弾を確認した\n");
-                    if (gun.Bullet[gun.Count + 1] == true)
+                    if (gun.Bullet[gun.Count] == true)
                     {
                         if (pointtriggercard)
                         {

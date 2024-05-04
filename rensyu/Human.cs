@@ -49,14 +49,15 @@ public class Human
             Console.WriteLine($"{name}は{human.name}に向かって引き金を引きました");
             human.life--;
             Console.WriteLine("実弾が入っていました");
-            Console.WriteLine($"{human.name}の残りHPは{life}です\n");
+            Console.WriteLine($"{human.name}の残りHPは{human.life}です\n");
         }
         else
         {
             Console.WriteLine($"{name}は{human.name}に向かって引き金を引きました");
             Console.WriteLine("実弾は入っていませんでした");
-            Console.WriteLine($"{human.name}の残りHPは {life}です\n");
+            Console.WriteLine($"{human.name}の残りHPは {human.life}です\n");
         }
+        gun.Count++;
     }
     public void usecheatcard()
     {
