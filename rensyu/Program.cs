@@ -9,38 +9,40 @@ class rennsyu
         Human player = new Human(inputname);
         Dealer dealer = new Dealer();
         bool order = RandomBoolGenerator.GetRandomBool();
+            Thread.Sleep(500);
         if (order)
         {
-            Thread.Sleep(1000);
             Console.WriteLine($"\n{player.name}の先行です\n");
+            Thread.Sleep(500);
             Gun gun = new Gun();
+            Thread.Sleep(500);
             while (true)
             {
                 player.selectAction(gun,dealer);
-                Thread.Sleep(1000);
-                if (gun.Bullet.Length==gun.Count)
-                {
-                    Thread.Sleep(1000);
-                    gun.resetBullet();
-                    Console.WriteLine($"マガジンの弾数は{gun.Bullet.Length}です\n");
-                    Thread.Sleep(1000);
-                }
+                Thread.Sleep(1500);
                 if(player.life==0||dealer.life==0)
                 {
                     break;
                 }    
-                dealer.dealerAction(gun,player);
-                Thread.Sleep(1000);
-                if (gun.Bullet.Length == gun.Count)
+                if (gun.Bullet.Length==gun.Count)
                 {
-                    Thread.Sleep(1000);
+                    Thread.Sleep(1500);
                     gun.resetBullet();
                     Console.WriteLine($"マガジンの弾数は{gun.Bullet.Length}です\n");
-                    Thread.Sleep(1000);
+                    Thread.Sleep(1500);
                 }
+                dealer.dealerAction(gun,player);
+                Thread.Sleep(1500);
                 if (player.life == 0 || dealer.life == 0)
                 {
                     break;
+                }
+                if (gun.Bullet.Length == gun.Count)
+                {
+                    Thread.Sleep(1500);
+                    gun.resetBullet();
+                    Console.WriteLine($"マガジンの弾数は{gun.Bullet.Length}です\n");
+                    Thread.Sleep(1500);
                 }
             }
             if(dealer.life == 0)
@@ -55,32 +57,36 @@ class rennsyu
         else 
         {
             Console.WriteLine($"\n{dealer.name}の先行です\n");
+            Thread.Sleep(500);
             Gun gun = new Gun();
+            Thread.Sleep(500);
             while (true)
             {
                 dealer.dealerAction(gun, player);
-                if (gun.Bullet.Length == gun.Count)
-                {
-                    Thread.Sleep(1000);
-                    gun.resetBullet();
-                    Console.WriteLine($"マガジンの弾数は{gun.Bullet.Length}です\n");
-                    Thread.Sleep(1000);
-                }
+                Thread.Sleep(1500);
                 if (player.life == 0 || dealer.life == 0)
                 {
                     break;
+                }
+                if (gun.Bullet.Length == gun.Count)
+                {
+                    Thread.Sleep(1500);
+                    gun.resetBullet();
+                    Console.WriteLine($"マガジンの弾数は{gun.Bullet.Length}です\n");
+                    Thread.Sleep(1500);
                 }
                 player.selectAction(gun, dealer);
-                if (gun.Bullet.Length == gun.Count)
-                {
-                    Thread.Sleep(1000);
-                    gun.resetBullet();
-                    Console.WriteLine($"マガジンの弾数は{gun.Bullet.Length}です\n");
-                    Thread.Sleep(1000);
-                }
+                Thread.Sleep(1500);
                 if (player.life == 0 || dealer.life == 0)
                 {
                     break;
+                }
+                if (gun.Bullet.Length == gun.Count)
+                {
+                    Thread.Sleep(1500);
+                    gun.resetBullet();
+                    Console.WriteLine($"マガジンの弾数は{gun.Bullet.Length}です\n");
+                    Thread.Sleep(1500);
                 }
             }
             if (dealer.life == 0)

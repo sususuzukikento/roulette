@@ -132,7 +132,7 @@ public class Human
                 }
                 else
                 {
-                    Console.WriteLine("使用できません");
+                    Console.WriteLine("使用できません\n");
                 }
             }
             else if (num == 4)
@@ -140,6 +140,17 @@ public class Human
                 if (pointtriggercard)
                 {
                     pointtrigger(gun,human);
+                    if (life == 0 || human.life == 0)
+                    {
+                        break;
+                    }
+                    if (gun.Bullet.Length == gun.Count)
+                    {
+                        Thread.Sleep(1500);
+                        gun.resetBullet();
+                        Console.WriteLine($"マガジンの弾数は{gun.Bullet.Length}です\n");
+                        Thread.Sleep(1500);
+                    }
                     continue;
                 }
                 else

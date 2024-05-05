@@ -12,7 +12,7 @@ public class Gun
     public double probability //開示されている情報のみで求まる実弾が込められている確率。
     { get
         {
-            return (Bullet.Length+1-cartridge)/(3*Bullet.Length-Count);
+            return ((double)Bullet.Length+(double)1-(double)cartridge)/((double)3*(double)Bullet.Length-(double)Count);
         }
         set { probability = value; } 
     }
