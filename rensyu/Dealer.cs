@@ -33,6 +33,7 @@ class Dealer : Human
                         if (pointtriggercard)
                         {
                             pointtrigger(gun, human);
+                            Thread.Sleep(1500);
                             if (life == 0 || human.life == 0)
                             {
                                 break;
@@ -68,6 +69,7 @@ class Dealer : Human
                     if (pointtriggercard && RandomBoolGenerator.GetRandomBool())
                     {
                         pointtrigger(gun, human);
+                        Thread.Sleep(1500);
                         if (life == 0 || human.life == 0)
                         {
                             break;

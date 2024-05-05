@@ -13,7 +13,7 @@ public class Human
     public bool passcard { get; set; }
     public bool pointtriggercard {  get; set; }
 
-    string[] actionList = new string[] { "1:引き金を引く", "2:パスする", "3:実弾の数を見る","4:相手を撃つ" };
+    string[] actionList = new string[] { "1:引き金を引く", "2:パスする", "3:次の弾を見る","4:相手を撃つ","5:ルールを表示する" };
 
     public Human(string name)
     {
@@ -92,6 +92,7 @@ public class Human
                 {
                     Console.Write("," + actionList[3]);
                 }
+                Console.Write(","+actionList[4]);
                 Console.WriteLine();
                 bool b = int.TryParse(Console.ReadLine(), out num);
                 if (b == true)
@@ -157,6 +158,14 @@ public class Human
                 {
                     Console.WriteLine("使用できません\n");
                 }
+            }
+            else if(num == 5) 
+            {
+                Console.WriteLine("このゲームは1対1のロシアンルーレットをするゲームです。");
+                Console.WriteLine("マガジンには3～5発の弾が自動的に装填され、最低でも1発以上の実弾と空弾が装填されます。");
+                Console.WriteLine("プレイヤーはHPが3の状態でゲームを開始して先にHPが0になったほうの負けです。");
+                Console.WriteLine("自分に向かって引き金を引く以外の特殊行動はゲーム中にそれぞれ1度まで使用できます。");
+                Console.WriteLine();
             }
         }
     }
